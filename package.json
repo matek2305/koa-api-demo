@@ -1,0 +1,30 @@
+{
+  "name": "koa-api-demo",
+  "version": "1.0.0",
+  "description": "rest api demo using koa library",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matek2305/koa-api-demo.git"
+  },
+  "author": "Mateusz Urbanski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matek2305/koa-api-demo/issues"
+  },
+  "scripts": {
+    "start": "tsc && node src/index.js"
+  },
+  "devDependencies": {
+    "typescript": "^2.5.3"
+  },
+  "dependencies": {
+    "@types/koa": "^2.0.39",
+    "@types/koa-bodyparser": "^3.0.25",
+    "@types/koa-router": "^7.0.23",
+    "@types/node": "^8.0.31",
+    "body-parser": "^1.18.2",
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.2.1"
+  }
+}
