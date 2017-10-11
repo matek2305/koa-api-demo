@@ -5,6 +5,11 @@ import * as bodyParser from "koa-bodyparser";
 const app = new Koa();
 const router = new Router();
 
+router
+  .get("/", ctx => {
+    ctx.body = "Hello World";
+  });
+
 app.use(bodyParser());
 app.use(router.routes());
 app.use(router.allowedMethods());
