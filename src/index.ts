@@ -8,6 +8,7 @@ import { Match, MatchModel } from "./model/match";
 const app = new Koa();
 const router = new Router({ prefix: "/api" });
 
+(<any>mongoose).Promise = global.Promise;
 mongoose.connect("mongodb://localhost:27017/test", { useMongoClient: true });
 
 mongoose.connection.once('open', () => {
@@ -15,9 +16,15 @@ mongoose.connection.once('open', () => {
 });
 
 router
-  .post("/match", ctx => {
+
+  .post("/match", async ctx => {
     const match = new MatchModel(ctx.request.body);
-    match.save();
+    await match.save();
+    ctx.body = match;
+  })
+
+  .get("/match/:id", async ctx => {
+    const match = await MatchModel.findById(ctx.params.id);
     ctx.body = match;
   });
 
