@@ -3,11 +3,13 @@ import * as Router from "koa-router";
 import * as bodyParser from "koa-bodyparser";
 
 const app = new Koa();
-const router = new Router();
+const router = new Router({ prefix: "/api"});
 
 router
-  .get("/", ctx => {
-    ctx.body = "Hello World";
+  .post("/match", ctx => {
+    const requestBody = ctx.request.body;
+    console.log("Received request body:\n" + JSON.stringify(requestBody, null, 2));
+    ctx.body = requestBody;
   });
 
 app.use(bodyParser());
