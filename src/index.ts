@@ -26,6 +26,11 @@ router
   .get("/match/:id", async ctx => {
     const match = await MatchModel.findById(ctx.params.id);
     ctx.body = match;
+  })
+
+  .put("/match/:id", async ctx => {
+    await MatchModel.update({ _id: ctx.params.id }, ctx.request.body);
+    ctx.body = await MatchModel.findById(ctx.params.id);
   });
 
 app.use(bodyParser());
