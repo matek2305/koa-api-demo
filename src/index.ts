@@ -1,15 +1,24 @@
 import * as Koa from "koa";
 import * as Router from "koa-router";
 import * as bodyParser from "koa-bodyparser";
+import * as mongoose from "mongoose";
+
+import { Match, MatchModel } from "./model/match";
 
 const app = new Koa();
-const router = new Router({ prefix: "/api"});
+const router = new Router({ prefix: "/api" });
+
+mongoose.connect("mongodb://localhost:27017/test", { useMongoClient: true });
+
+mongoose.connection.once('open', () => {
+  console.log('connection opened');
+});
 
 router
   .post("/match", ctx => {
-    const requestBody = ctx.request.body;
-    console.log("Received request body:\n" + JSON.stringify(requestBody, null, 2));
-    ctx.body = requestBody;
+    const match = new MatchModel(ctx.request.body);
+    match.save();
+    ctx.body = match;
   });
 
 app.use(bodyParser());

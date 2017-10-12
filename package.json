@@ -15,16 +15,20 @@
     "start": "tsc && node src/index.js"
   },
   "devDependencies": {
-    "typescript": "^2.5.3"
-  },
-  "dependencies": {
     "@types/koa": "^2.0.39",
     "@types/koa-bodyparser": "^3.0.25",
     "@types/koa-router": "^7.0.23",
     "@types/node": "^8.0.31",
+    "@types/mongodb": "^2.2.13",
+    "@types/mongoose": "^4.7.23",
+    "typescript": "^2.5.3"
+  },
+  "dependencies": {
     "body-parser": "^1.18.2",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
-    "koa-router": "^7.2.1"
+    "koa-router": "^7.2.1",
+    "mongoose": "^4.12.1",
+    "typegoose": "^3.5.1"
   }
 }
